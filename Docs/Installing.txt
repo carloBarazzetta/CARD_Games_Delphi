@@ -1,0 +1,7 @@
+Installing CardTable.
+
+For newer versions of Delphi, not standard Turbo Explorer, you need to install into a new or existing package via component install packages option. For Turbo Explorer CardTable needs to be within the directory or within the path.
+
+For older Delphi version eg 7 simply choose Install Component from the Component menu and install into the default package. As the unit file name simply browse to CardTable.pas and press ok.
+
+Multiple cardsets are used. Before the component can be used it needs to know the location of the cardsets directory. It is by default looked for in directory Cardsets in the program directory. Alternatively another location can be specified for the cardsets by the first line in a file named Config.txt in the program directory. This must be a fully qualified filename Eg C:\Cardsets note no trailing \. CardTable will also look for the cardsets directory within all of the directories listed within the path environment variable. At design time it is best to put the cardsets directory within one of these directories, perhaps Delphi\bin\ or Delphi\projects\bpl\ or add a new directory entry to the path variable as if you open files outside the current directory at design time and the cardsets are not within the path then you may have problems. If cardsets directory cannot be found then (runtime only) the component will ask for the full path and write its own Config.txt.

@@ -1,0 +1,13 @@
+Modified from a PySol cardset by David Mayne. david_mayne@hotmail.com.
+
+This PySol cardset was adapted from xpat2 1.04.
+http://metalab.unc.edu/pub/Linux/games/solitaires/
+
+Copyright (C) 1994 Heiko Eissfeldt <heiko@colossus.escape.de>
+Copyright (C) 1994 Michael Bischoff <mbi@mo.math.nat.tu-bs.de>
+Copyright (C) 1998 Markus F.X.J. Oberhumer <markus.oberhumer@jk.uni-linz.ac.at>
+
+This cardset is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2 of
+the License, or (at your option) any later version.

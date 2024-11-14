@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{753FFAB9-6F72-4AD5-9FB3-B59FDB08A388}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="GiocoBriscola.Server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="GiocoBriscola.Client.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GiocoBriscola_Server">
+        <MSBuild Projects="GiocoBriscola.Server.dproj"/>
+    </Target>
+    <Target Name="GiocoBriscola_Server:Clean">
+        <MSBuild Projects="GiocoBriscola.Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GiocoBriscola_Server:Make">
+        <MSBuild Projects="GiocoBriscola.Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GiocoBriscola_Client">
+        <MSBuild Projects="GiocoBriscola.Client.dproj"/>
+    </Target>
+    <Target Name="GiocoBriscola_Client:Clean">
+        <MSBuild Projects="GiocoBriscola.Client.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GiocoBriscola_Client:Make">
+        <MSBuild Projects="GiocoBriscola.Client.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GiocoBriscola_Server;GiocoBriscola_Client"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GiocoBriscola_Server:Clean;GiocoBriscola_Client:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GiocoBriscola_Server:Make;GiocoBriscola_Client:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

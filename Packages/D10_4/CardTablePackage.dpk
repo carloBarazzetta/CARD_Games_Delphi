@@ -1,0 +1,57 @@
+{
+CardTable
+Copyright © 2023 Ethea S.r.l.
+
+Original code is Copyright © 2004/05/06/07/08 by David Mayne.
+}
+package CardTablePackage;
+
+{$R *.res}
+{$R *.dcr}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS ON}
+{$RANGECHECKS ON}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'Components for Card Games'}
+{$LIBSUFFIX AUTO}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vclimg,
+  vcl,
+  GLScene_Sounds_RT;
+
+contains
+  CardTable in '..\..\Source\CardTable.pas',
+  Backdrop in '..\..\Source\Backdrop.pas',
+  ImageArrayUnit in '..\..\Source\ImageArrayUnit.pas',
+  MyGrphx in '..\..\Source\MyGrphx.pas',
+  SoundUnit in '..\..\Source\SoundUnit.pas',
+  uVistaFuncs in '..\..\Source\uVistaFuncs.pas',
+  DeckPathForm in '..\..\Source\DeckPathForm.pas' {DeckPathForm},
+  CardDeckForm in '..\..\Source\CardDeckForm.pas' {CardDeckForm},
+  CardBackForm in '..\..\Source\CardBackForm.pas' {CardBackForm};
+
+end.

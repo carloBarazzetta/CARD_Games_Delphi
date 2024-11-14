@@ -1,0 +1,1 @@
+The same format as all the other cardsets but with extra file shadow02.bmp. This is used as the full cards shadow when it is lifted. Other sets can use shade.bmp but in this set this shade was modified to reflect light effects so another basic bmp was needed.

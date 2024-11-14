@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1D189069-E25A-4A46-A58C-F6827169780D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CardTablePackage.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dclCardTablePackage.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CardTablePackage">
+        <MSBuild Projects="CardTablePackage.dproj"/>
+    </Target>
+    <Target Name="CardTablePackage:Clean">
+        <MSBuild Projects="CardTablePackage.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CardTablePackage:Make">
+        <MSBuild Projects="CardTablePackage.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="dclCardTablePackage">
+        <MSBuild Projects="dclCardTablePackage.dproj"/>
+    </Target>
+    <Target Name="dclCardTablePackage:Clean">
+        <MSBuild Projects="dclCardTablePackage.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dclCardTablePackage:Make">
+        <MSBuild Projects="dclCardTablePackage.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CardTablePackage;dclCardTablePackage"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CardTablePackage:Clean;dclCardTablePackage:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CardTablePackage:Make;dclCardTablePackage:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

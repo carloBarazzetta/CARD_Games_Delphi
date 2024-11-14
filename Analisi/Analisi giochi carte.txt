@@ -1,0 +1,59 @@
+Briscola: 3 varianti:
+1) due giocatori
+2) a coppie
+3) briscola chiamata
+
+Una Engine unico per tutte e tre le varianti, con le caratteristiche comuni:
+1) il tipo di mazzo di gioco
+2) il tipo di "giro" orario o antiorario
+3) il valore delle carte per i punti
+4) organizzazione del gioco sempre in squadre (anche in caso di 1 contro 1) così anche il calcolo dei punti a fine partita viene fatto nella classe di base
+5) Va stabilito il concetto di "turno di gioco": quando inizia e quando termina.
+6) Va tenuta l'informazione di chi è il mazziere
+7) Va tenuta l'informazione di chi è il giocatore che deve "agire"
+8) per la briscola chiamata, serve sapere il chiamante
+Turni e fasi di gioco:
+1) Fase 1: preparazione
+1.1) Turno 1: Scelta del genere di mazzo di carte (piacentine, francesi) e sua generazione
+1.2) Turno 2: Aquisizione dei giocatori (nella classe a coppie definizione anche della squadra)
+1.3) Turno 3: Definizione del obiettivo della sfida (MatchTarget): totale partite o totale punteggio da raggiungere
+1.4) Solo per Briscola Chiamata: definizione carta di partenza per la fase di chiamata: Asso o Due, per la variante del due
+2.1) Turno 4: scelta casuale del primo mazziere
+2) Fase 2: Inizio di una nova partita
+2.1) mischiare il mazzo da parte del mazziere
+2.2) distribuzione delle carte da parte del mazziere
+3) Fase 3: Scelta della Briscola: per il gioco a 2 o a coppie: 
+3.1) Turno 1:  si scopre l'ultima carta del mazzo, e quindi si stabilisce la briscola
+3) Fase 3 variante: Scelta della Briscola: per la briscola chiamata parte una nuova fase con dei nuovi turni:
+3.2) A [Rotazione] dichiarazione valore fino a scendere al 2: il giocatore chiama un numero o passa (diventa inattivo). Se si arriva al 2 e ci sono più giocatori attivi si rilancia sul punteggio (a partire da 62).
+3.3) Turno di dichiarazione dell'unico giocatore rimasto della briscola chiamata (Seme e Valore)
+4) Fase 4: inizio della partita gioco delle carte:
+4.1) Turno 1: [a Rotazione], ogni giocatore getta una carta sul tavolo, partendo dal giocatore di turno.
+4.2) Turno 2: Calcolo del giocatore che vince la mano
+4.3) Turno 3: Raccolta delle carte sul tavolo da parte del giocatore che ha vinto la mano
+4.4) Turno 4: Aggiornamento dei punteggi: accumulato dal giocatore e dalla squadra di appartenenza
+4.5) Turno 5: Nel caso di Briscola chiamata, se si svela la carta di Briscola chiamata, si costituiscono le squadre (2 contro 3)
+4.6) Turno 6: Cambio del giocatore di Turno.
+4.7) Turno 7: se ci sono carte nel mazzo ogni giocatore [a rotazione] pesca una carta
+4.8) Turno 8: se i giocatori hanno ancora carte in mano, si ripete il turno 1
+4.9) Turno 9: se non ci sono più carte in mano la partita termina
+5) Fase 5: termine della partita
+5.1) Turno 1: Calcolo dei punteggi delle squadre e assegnazione punti ai giocatori
+5.2) Turno 2: Dichiarazione dei vincitori e dei perdenti
+6) Fase 6: termine del match:
+6.1) se si raggiunge  MatchTarget -> fine sfida: Dichiarazione dei vincitori del match
+6.2) altrimenti:
+6.3) Raccolta delle carte nel mazzo
+6.4) Definizione nuovo mazziere
+6.5) Nuova partita (vai al Fase 2)
+
+
+Nella tua descrizione hai parlato anche di Fasi di gioco, ma non abbiamo previsto una struttura per gestirle. Abbiamo immaginato i turni di gioco, dove cambia il giocatore e ci si aspetta poi una sua azione.
+Iniziamo l'ipotesi di costruire il gioco della Briscola tra due giocatori in cui ti elenco le regole e le fasi di gioco:
+
+Mi sfugge un concetto: nello sviluppo di una applicazione Client  / Server immagino che la logica sia questa:
+Il server risponde alle richieste dei client con qualche protocollo di comunicazione ed è in grado di rispondere a determinate richieste. Al proprio interno dovrebbe avere una lista di engine/giochi di carte attivi: ciascun engine è in grado di far avanzare il proprio gioco.
+I client sono N, uno per ogni Player che vuole giocare ad un gioco di carte, e che avrà anche lui un engine lato client, speculare di fatto all'engine lato server, ma con una "visibilità" del Player. Il client ha due possibilità: chiedere di iniziare un nuovo gioco oppure partecipare ad un gioco che è in attesa di completare i giocatori richiesti.
+Iniziamo a risolvere questa prima cosa, cioè la creazione di un nuovo engine/gioco lato server a fronte di una richiesta di un giocatore che ne diventa il primo della lista.
+Poi il server dovrà avere un modo per fornire la lista delle partite in attesa di completare la lista dei giocatori. Quando l'ultimo giocatore si "collega" alla partita allora il gioco può iniziare.
+Credo che per iniziare serva una classe TCardGameMatch che definisce la "partita", che conterrà l'istanza del gioco
